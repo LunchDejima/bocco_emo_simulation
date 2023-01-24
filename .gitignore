@@ -47,3 +47,5 @@ ios/DartDefines.xcconfig
 
 .python
 .fvm/flutter_sdk
+
+assets/icon.png

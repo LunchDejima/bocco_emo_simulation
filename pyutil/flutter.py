@@ -1,4 +1,4 @@
-import os, subprocess, yaml
+import os, subprocess, yaml, shutil
 from pyutil.conf import conf,conf_dev,conf_prod
 
 def pub():
@@ -11,6 +11,13 @@ def get_defines(prod=False):
   defines = conf | (conf_prod if prod else conf_dev)
   defines["APP_VERSION"] = pubspec["version"]
   return defines
+
+def icon(env="dev"):
+  shutil.copyfile('./pyutil/assets/icon_'+env+'.png', './assets/icon.png')
+  os.system("fvm flutter pub run flutter_launcher_icons:main")
+
+def splash(env='dev'):
+  os.system("fvm flutter pub run flutter_native_splash:create --path=./pyutil/assets/splash_"+env+".yaml")
 
 def convert_to_define_str(defines=dict()):
   list = []
@@ -27,7 +34,10 @@ def run(
   prod=False,
 ):
   defines = get_defines(prod) 
+  env = defines["APP_ENV"]
   pub()
+  icon(env)
+  splash(env)
 
   options = ["--" + mode]
   if verbose: options.append("--verbose")
