@@ -43,5 +43,7 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+ios/DartDefines.xcconfig
+
 .python
 .fvm/flutter_sdk
