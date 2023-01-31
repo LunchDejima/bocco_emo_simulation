@@ -1,6 +1,7 @@
 import 'package:bocco_emo_simulation/l10n/l10n.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:bocco_emo_simulation/etc/style.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,9 +15,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: const String.fromEnvironment('APP_NAME'),
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: getTheme(Style.light),
+      darkTheme: getTheme(Style.dark),
       supportedLocales: L10n.supportedLocales,
       localizationsDelegates: L10n.localizationsDelegates,
       localeResolutionCallback: (locale, supportedLocales) {
@@ -42,8 +42,10 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final l10n = L10n.of(context);
+    final theme = Theme.of(context);
 
     return Scaffold(
+      appBar: AppBar(backgroundColor: theme.colorScheme.primary),
       body: Center(
         child: Text(l10n!.hello),
       ),
