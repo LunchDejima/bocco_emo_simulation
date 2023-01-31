@@ -31,6 +31,22 @@ class MyApp extends StatelessWidget {
         Intl.defaultLocale = _locale.toString();
         return _locale;
       },
+      home: const Home(),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  const Home({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final l10n = L10n.of(context);
+
+    return Scaffold(
+      body: Center(
+        child: Text(l10n!.hello),
+      ),
     );
   }
 }

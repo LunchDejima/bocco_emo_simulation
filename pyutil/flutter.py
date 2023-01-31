@@ -42,6 +42,9 @@ def android_build(prod=False):
   exec = f"fvm flutter build appbundle {convert_to_define_str(defines)}"
   os.system(exec)
 
+def l10n():
+  subprocess.run(["fvm flutter gen-l10n"], shell=True)
+
 def run(
   target="./lib/main.dart",  
   mode="debug",
@@ -52,6 +55,7 @@ def run(
   defines = get_defines(prod) 
   env = defines["APP_ENV"]
   pub()
+  l10n()
   icon(env)
   splash(env)
 
