@@ -26,6 +26,22 @@ def convert_to_define_str(defines=dict()):
 
   return " ".join(list)
 
+def android_jks():
+  alias = conf["APP_ALIAS"]
+  subprocess.run(["sudo ln -sfn $(brew --prefix)/opt/openjdk/libexec/openjdk.jdk /Library/Java/JavaVirtualMachines/openjdk.jdk"], shell=True)
+  
+  os.system("keytool -genkey -v -keystore ./android/"+alias+".jks -keyalg RSA -keysize 2048 -validity 10000 -alias "+alias+" -storetype JKS")
+
+def android_build(prod=False):
+  defines = get_defines(prod)
+  env = defines["APP_ENV"]
+  pub()
+  icon(env)
+  splash(env)
+  
+  exec = f"fvm flutter build appbundle {convert_to_define_str(defines)}"
+  os.system(exec)
+
 def run(
   target="./lib/main.dart",  
   mode="debug",
