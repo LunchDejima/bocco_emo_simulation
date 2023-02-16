@@ -13,3 +13,8 @@ conf_prod = dict(
   APP_ENV="prod",
   APP_SUFFIX="",
 )
+
+conf_test = dict(
+  APP_ENV="test",
+  APP_SUFFIX="",
+)
