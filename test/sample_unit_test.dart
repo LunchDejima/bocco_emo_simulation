@@ -1,6 +1,7 @@
 import 'package:bocco_emo_simulation/etc/style.dart';
 import 'package:bocco_emo_simulation/etc/utils.dart';
 import 'package:bocco_emo_simulation/main.dart';
+import 'package:bocco_emo_simulation/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
@@ -28,7 +29,7 @@ void main() {
 
     routerState.change(Uri(path: '/nextpage'));
     expect(routerState.state, Uri(path: '/nextpage'));
-    
+
     routerState.pop();
     expect(routerState.state, Uri(path: '/'));
   });

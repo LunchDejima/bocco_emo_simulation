@@ -42,6 +42,10 @@ dependencies:
   intl: ^0.17.0
   flutter_web_plugins:
     sdk: flutter
+  provider: ^6.0.5
+  freezed_annotation: ^2.2.0
+  json_annotation: ^4.8.0
+  http: ^0.13.5
 
 dev_dependencies:
   integration_test:
@@ -56,6 +60,9 @@ dev_dependencies:
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
   flutter_launcher_icons: "^0.11.0"
+  build_runner: ^2.3.3
+  freezed: ^2.3.2
+  json_serializable: ^6.6.1
 
 flutter_icons:
   android: "launcher_icon"

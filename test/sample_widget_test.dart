@@ -7,6 +7,7 @@
 
 import 'package:bocco_emo_simulation/etc/style.dart';
 import 'package:bocco_emo_simulation/l10n/l10n.dart';
+import 'package:bocco_emo_simulation/router/router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
