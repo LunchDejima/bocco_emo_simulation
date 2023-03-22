@@ -10,6 +10,10 @@ def github_api_unit_test():
   defines = convert_to_define_str(get_defines(conf_test))
   subprocess.run(['fvm flutter test test/search_repo_unit_test.dart ' + defines], shell=True)
 
+def github_api_widget_test():
+  defines = convert_to_define_str(get_defines(conf_test))
+  subprocess.run(['fvm flutter test test/search_repo_widget_test.dart ' + defines], shell=True)
+
 def widget_test():
   defines = convert_to_define_str(get_defines(conf_test))
   subprocess.run(['fvm flutter test test/sample_widget_test.dart ' + defines], shell=True)

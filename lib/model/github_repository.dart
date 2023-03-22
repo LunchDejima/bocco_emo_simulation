@@ -6,7 +6,7 @@ class GithubRepository {
   final String fullName;
   final String? language;
   final int watchersCount;
-  final int stargazersCountl;
+  final int stargazersCount;
   final int forksCount;
   final int openIssuesCount;
   final String avatarUrl;
@@ -16,7 +16,7 @@ class GithubRepository {
     required this.fullName,
     this.language,
     required this.watchersCount,
-    required this.stargazersCountl,
+    required this.stargazersCount,
     required this.forksCount,
     required this.openIssuesCount,
     required this.avatarUrl,
@@ -27,7 +27,7 @@ class GithubRepository {
       name: json['name'],
       fullName: json['full_name'],
       language: json['language'],
-      stargazersCountl: json['stargazers_count'],
+      stargazersCount: json['stargazers_count'],
       watchersCount: json['watchers_count'],
       forksCount: json['forks_count'],
       openIssuesCount: json['open_issues_count'],

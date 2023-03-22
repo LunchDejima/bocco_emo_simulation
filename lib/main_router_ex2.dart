@@ -35,10 +35,10 @@ class SMain extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Main page')),
+      appBar: AppBar(title: const Text('Main page')),
       body: Center(
         child: ElevatedButton(
-          child: Text('go to page1'),
+          child: const Text('go to page1'),
           onPressed: () {
             _routerState.change(Uri(path: '/page1'));
           },
@@ -63,20 +63,20 @@ class SPage1 extends StatelessWidget {
               child: Scaffold(
                 backgroundColor: Colors.yellow,
                 appBar: AppBar(
-                  title: Text('PAGE1'),
+                  title: const Text('PAGE1'),
                 ),
                 body: ListView(
                   padding: const EdgeInsets.all(50),
                   children: [
                     ElevatedButton(
-                      child: Text('go to next'),
+                      child: const Text('go to next'),
                       onPressed: () {
                         _routerState.change(Uri(path: '/page1/page2'));
                       },
                     ),
                     const SizedBox(height: 50),
                     ElevatedButton(
-                      child: Text('back'),
+                      child: const Text('back'),
                       onPressed: () {
                         _routerState.pop();
                       },
@@ -90,20 +90,20 @@ class SPage1 extends StatelessWidget {
                 child: Scaffold(
                   backgroundColor: Colors.lightGreenAccent,
                   appBar: AppBar(
-                    title: Text('PAGE2'),
+                    title: const Text('PAGE2'),
                   ),
                   body: ListView(
                   padding: const EdgeInsets.all(50),
                   children: [
                     ElevatedButton(
-                      child: Text('back to page1'),
+                      child: const Text('back to page1'),
                       onPressed: () {
                         _routerState.pop();
                       },
                     ),
                     const SizedBox(height: 50),
                     ElevatedButton(
-                      child: Text('back to main'),
+                      child: const Text('back to main'),
                       onPressed: () {
                         _routerState.change(Uri(path: '/'));
                       },

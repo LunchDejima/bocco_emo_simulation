@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 final routerState = AppRouteState();
 
 class AppRouteState extends ChangeNotifier {
-  Uri _state = Uri(path: '/');
+  Uri _state = Uri(path: '/search_repo');
   Uri get state => _state;
 
   void change(Uri newUri) {
@@ -25,6 +25,23 @@ class AppRouteInformationPareser extends RouteInformationParser<Uri> {
     Uri uri = Uri.parse(routeInformation.location!);
     if (uri.path.isEmpty) {
       uri = Uri(path: '/');
+    }
+    return uri;
+  }
+
+  @override
+  RouteInformation? restoreRouteInformation(Uri configuration) {
+    return RouteInformation(location: configuration.path);
+  }
+}
+
+class SearchRepoRouteInformationPareser extends RouteInformationParser<Uri> {
+  @override
+  Future<Uri> parseRouteInformation(RouteInformation routeInformation) async {
+    Uri uri = Uri.parse(routeInformation.location!);
+    if (uri.path.isEmpty || uri.path == '/') {
+      uri = Uri(path: '/search_repo');
+
     }
     return uri;
   }

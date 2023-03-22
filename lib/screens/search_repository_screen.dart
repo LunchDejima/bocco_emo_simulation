@@ -1,13 +1,12 @@
 import 'package:bocco_emo_simulation/api/github_api_client.dart';
 import 'package:bocco_emo_simulation/model/github_repository.dart';
-import 'package:bocco_emo_simulation/view_model/search_repo_model.dart';
+import 'package:bocco_emo_simulation/router/router.dart';
+import 'package:bocco_emo_simulation/view_model/search_repo_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
 class SearchRepoScreen extends StatelessWidget {
-  const SearchRepoScreen({super.key});
+  const SearchRepoScreen() : super(key: const Key('search_repo'));
 
   @override
   Widget build(BuildContext context) {
@@ -18,13 +17,14 @@ class SearchRepoScreen extends StatelessWidget {
       appBar: AppBar(
         actions: [
           TextButton(
+            key: const Key('bt_search'),
             onPressed: () {
               if (model.searchText.isNotEmpty) {
                 model.searchRepo(model.searchText);
               }
             },
             child: Padding(
-              padding: EdgeInsets.all(0),
+              padding: const EdgeInsets.all(0),
               child: Text(
                 '検索',
                 style: TextStyle(
@@ -42,28 +42,30 @@ class SearchRepoScreen extends StatelessWidget {
           ),
           height: 40,
           child: TextField(
+            key: const Key('text_field_search_repo'),
             maxLines: 1,
             cursorColor: theme.primaryColor,
             textAlignVertical: TextAlignVertical.center,
             decoration: InputDecoration(
               prefixIcon: Icon(Icons.search, color: theme.iconTheme.color),
-              contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 10),
+              contentPadding:
+                  const EdgeInsets.symmetric(vertical: 8, horizontal: 10),
               hintStyle: TextStyle(color: theme.hintColor, fontSize: 14),
               hintText: 'Githubのリポジトリを検索する',
               enabledBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+                borderRadius: const BorderRadius.all(Radius.circular(30)),
                 borderSide: BorderSide(
                   color: theme.backgroundColor,
                 ),
               ),
               focusedBorder: OutlineInputBorder(
-                borderRadius: BorderRadius.all(Radius.circular(30)),
+                borderRadius: const BorderRadius.all(Radius.circular(30)),
                 borderSide: BorderSide(
                   color: theme.backgroundColor,
                 ),
               ),
               filled: true,
-              fillColor: Color(0xFF1618230f),
+              fillColor: const Color(0xff1618230f),
             ),
             onChanged: (value) {
               model.searchText = value;
@@ -103,21 +105,20 @@ class SearchRepoScreen extends StatelessWidget {
           children: [
             Expanded(
               child: ListView(
+                key: const Key('list_repo'),
                 children: [
                   ...model.repos
                       .map(
                         (repo) => ListTile(
-                          key: const Key('repo'),
                           onTap: () {
                             model.selectedRepo = repo;
-                            Navigator.of(context)
-                                .pushNamed('/repository_detail');
+                            routerState.change(Uri(path: 'search_repo/detail_repo'));
                           },
                           title: Text(
                             repo.name,
                             style: theme.textTheme.displayMedium,
                           ),
-                          trailing: Icon(Icons.arrow_forward_ios),
+                          trailing: const Icon(Icons.arrow_forward_ios),
                         ),
                       )
                       .toList(),
